@@ -65,7 +65,7 @@ export default function Button(theme: Theme) {
       }),
     };
 
-    const colorStyle = COLORS.map((color) => ({
+    const colorStyle = COLORS.map(color => ({
       ...(ownerState.color === color && {
         // CONTAINED
         ...(containedVariant && {
