@@ -9,6 +9,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import ThemeLocalization from './locales';
 
 // ** Custom components
+import ThemeProvider from './theme';
 import SnackbarProvider from './components/snackbar';
 import ScrollToTop from './components/scroll-to-top';
 import { ThemeSettings, SettingsProvider } from './components/settings';
@@ -22,14 +23,16 @@ export default function App() {
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <SettingsProvider>
           <BrowserRouter>
-            <ThemeSettings>
-              <ThemeLocalization>
-                <SnackbarProvider>
-                  <ScrollToTop />
-                  <Router />
-                </SnackbarProvider>
-              </ThemeLocalization>
-            </ThemeSettings>
+            <ThemeProvider>
+              <ThemeSettings>
+                <ThemeLocalization>
+                  <SnackbarProvider>
+                    <ScrollToTop />
+                    <Router />
+                  </SnackbarProvider>
+                </ThemeLocalization>
+              </ThemeSettings>
+            </ThemeProvider>
           </BrowserRouter>
         </SettingsProvider>
       </LocalizationProvider>

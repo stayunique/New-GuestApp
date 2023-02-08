@@ -7,6 +7,10 @@ export default function Input(theme: Theme) {
     MuiInputBase: {
       styleOverrides: {
         root: {
+          padding: 2,
+          borderRadius: '12.48px',
+          border: '1.13px solid',
+          borderColor: theme.palette.secondary.main,
           '&.Mui-disabled': {
             '& svg': {
               color: theme.palette.text.disabled,
@@ -14,6 +18,7 @@ export default function Input(theme: Theme) {
           },
         },
         input: {
+          textAlign: 'center',
           '&::placeholder': {
             opacity: 1,
             color: theme.palette.text.disabled,
