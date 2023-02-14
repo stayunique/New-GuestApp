@@ -5,24 +5,27 @@
 
 // ----------------------------------------------------------------------
 
-const en = {
+const es = {
+  welcome: {
+    landingMessage: `Hola! Bienvenido`,
+  },
   login: {
     form: {
       validations: {
         username: {
-          required: `Username is required`,
+          required: `El usuario es obligatorio`,
         },
         password: {
-          required: `Password is required`,
+          required: `La contraseña es obligatoria`,
         },
       },
       fields: {
-        username: `Username`,
-        password: `Password`,
+        username: `Usuario`,
+        password: `Contraseña`,
       },
-      button: `Log in`,
+      button: `Iniciar`,
     },
-    forgotPassword: `Forgot password?`,
+    forgotPassword: `¿Olvidó su contraseña?`,
   },
   demo: {
     title: `English`,
@@ -76,4 +79,4 @@ const en = {
   only_admin_can_see_this_item: `Only admin can see this item`,
 };
 
-export default en;
+export default es;

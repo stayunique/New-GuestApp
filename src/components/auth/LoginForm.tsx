@@ -12,6 +12,9 @@ import { LoadingButton } from '@mui/lab';
 // ** Routes
 import { PATH_AUTH } from '../../routes/paths';
 
+// ** Hooks
+import { useTranslation } from 'react-i18next';
+
 // ** Auth
 // import { useAuthContext } from '../../auth/useAuthContext';
 
@@ -30,9 +33,12 @@ export const LoginForm = () => {
   // ** States
   const [showPassword, setShowPassword] = useState(false);
 
+  // ** Hooks
+  const { t } = useTranslation();
+
   const LoginSchema = Yup.object().shape({
-    username: Yup.string().required('Username is required'),
-    password: Yup.string().required('Password is required'),
+    username: Yup.string().required(t('login.form.validations.username.required') || 'Username is required'),
+    password: Yup.string().required(t('login.form.validations.password.required') || 'Password is required'),
   });
 
   const defaultValues = {
@@ -52,7 +58,7 @@ export const LoginForm = () => {
             <TextField
               name="username"
               type="text"
-              placeholder="Username"
+              placeholder={t('login.form.fields.username') || 'Username'}
               value={values.username}
               onChange={handleChange}
               error={Boolean(errors.username && touched.username)}
@@ -61,7 +67,7 @@ export const LoginForm = () => {
 
             <TextField
               name="password"
-              placeholder="Password"
+              placeholder={t('login.form.fields.password') || 'Password'}
               type={showPassword ? 'text' : 'password'}
               onChange={handleChange}
               value={values.password}
@@ -99,13 +105,13 @@ export const LoginForm = () => {
                 textTransform: 'capitalize',
               }}
             >
-              Log in
+              {t('login.form.button')}
             </LoadingButton>
           </Stack>
 
           <Stack alignItems="center" sx={{ my: 2 }}>
             <Link component={RouterLink} to={PATH_AUTH.resetPassword} variant="body2" color="primary.lighter" underline="hover">
-              Forgot password
+              {t('login.forgotPassword')}
             </Link>
           </Stack>
         </Form>

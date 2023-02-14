@@ -6,11 +6,9 @@ import localStorageAvailable from '../utils/localStorageAvailable';
 //
 import { defaultLang } from './config-lang';
 //
+import esLocales from './langs/es';
 import enLocales from './langs/en';
 import frLocales from './langs/fr';
-import viLocales from './langs/vi';
-import cnLocales from './langs/cn';
-import arLocales from './langs/ar';
 
 // ----------------------------------------------------------------------
 
@@ -27,11 +25,9 @@ i18n
   .use(initReactI18next)
   .init({
     resources: {
+      es: { translations: esLocales },
       en: { translations: enLocales },
       fr: { translations: frLocales },
-      vi: { translations: viLocales },
-      cn: { translations: cnLocales },
-      ar: { translations: arLocales },
     },
     lng,
     fallbackLng: defaultLang.value,
