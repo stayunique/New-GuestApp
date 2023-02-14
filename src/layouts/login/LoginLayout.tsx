@@ -5,9 +5,6 @@ import Logo from '../../components/logo/Logo';
 import BackgroundSlider from '../../lib';
 import Footer from '../main/Footer';
 
-// ** Backgrounds
-import bgLogin1 from './';
-
 type Props = {
   children: React.ReactNode;
 };
