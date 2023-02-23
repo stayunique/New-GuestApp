@@ -9,6 +9,11 @@ const es = {
   welcome: {
     landingMessage: `Hola! Bienvenido`,
   },
+  languages: {
+    es: 'Español',
+    en: 'Inglés',
+    fr: 'Francés',
+  },
   login: {
     form: {
       validations: {
@@ -26,6 +31,17 @@ const es = {
       button: `Iniciar`,
     },
     forgotPassword: `¿Olvidó su contraseña?`,
+  },
+  home: {
+    buttons: {
+      arrival: { text: 'Arrival' },
+      enterApartment: { text: 'Enter at the apartment' },
+      guideActivities: { text: 'Guide & activities' },
+      services: { text: 'Services' },
+      wifi: { text: 'WI-FI' },
+      whatsapp: { text: 'Whatsapp' },
+      sustainability: { text: 'Sustainability' },
+    },
   },
   demo: {
     title: `English`,

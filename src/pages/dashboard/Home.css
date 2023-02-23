@@ -1,0 +1,41 @@
+.gallery {
+  --s: 200px; /* controls the image size */
+  --g: 10px; /* controls the gap between images */
+
+  display: grid;
+  gap: var(--g);
+  grid-template-columns: repeat(2, auto);
+  position: relative;
+}
+
+/* .gallery > .box-item {
+  width: var(--s);
+  aspect-ratio: 1;
+  object-fit: cover; */
+/* mask: conic-gradient(from var(--_a), #0000 90deg, #000 0); */
+/* } */
+
+.gallery > .box-item:nth-child(1) {
+  --_a: 0deg;
+}
+.gallery > .box-item:nth-child(2) {
+  --_a: 45deg;
+}
+.gallery > .box-item:nth-child(3) {
+  --_a: 90deg;
+}
+.gallery > .box-item:nth-child(4) {
+  --_a: 135deg;
+}
+.gallery > .box-item:nth-child(5) {
+  --_a: 180deg;
+  /* position: absolute;
+  inset: calc(50% - 0.5 * var(--s));
+  clip-path: inset(calc(var(--g) / 4)); */
+}
+.gallery > .box-item:nth-child(5) {
+  --_a: 240deg;
+  /* position: absolute;
+  inset: calc(50% - 0.5 * var(--s));
+  clip-path: inset(calc(var(--g) / 4)); */
+}

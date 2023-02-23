@@ -19,6 +19,9 @@ export const VerifyCodePage = Loadable(lazy(() => import('../pages/auth/VerifyCo
 export const NewPasswordPage = Loadable(lazy(() => import('../pages/auth/NewPasswordPage')));
 export const ResetPasswordPage = Loadable(lazy(() => import('../pages/auth/ResetPasswordPage')));
 
+// DASHBOARD: HOME
+export const GeneralHome = Loadable(lazy(() => import('../pages/dashboard/Home')));
+
 // DASHBOARD: CHECK IN
 export const GeneralCheckIn = Loadable(lazy(() => import('../pages/dashboard/check-in/GeneralCheckIn')));
 

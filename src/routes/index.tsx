@@ -15,6 +15,8 @@ import {
   VerifyCodePage,
   NewPasswordPage,
   ResetPasswordPage,
+  // Dashboard: Home
+  GeneralHome,
   // Dashboard: Check-in
   GeneralCheckIn,
   // Dashboard: Services
@@ -36,7 +38,7 @@ import {
   Page500,
   Page403,
   Page404,
-  HomePage,
+  // HomePage,
   FaqsPage,
   AboutPage,
   Contact,
@@ -80,7 +82,7 @@ export default function Router() {
         </AuthGuard>
       ),
       children: [
-        { element: <Navigate to={PATH_AFTER_LOGIN} replace />, index: true },
+        { index: true, element: <GeneralHome /> },
         { path: 'check-in', element: <GeneralCheckIn /> },
         { path: 'services', element: <GeneralServices /> },
         { path: 'whats-app', element: <GeneralWhatsApp /> },
@@ -94,7 +96,7 @@ export default function Router() {
     {
       element: <MainLayout />,
       children: [
-        { element: <HomePage />, index: true },
+        { index: true, element: <Navigate to={PATH_AFTER_LOGIN} replace /> },
         { path: 'about-us', element: <AboutPage /> },
         { path: 'contact-us', element: <Contact /> },
         { path: 'faqs', element: <FaqsPage /> },

@@ -6,6 +6,11 @@
 // ----------------------------------------------------------------------
 
 const en = {
+  languages: {
+    es: 'Spanish',
+    en: 'English',
+    fr: 'French',
+  },
   login: {
     form: {
       validations: {
@@ -23,6 +28,17 @@ const en = {
       button: `Log in`,
     },
     forgotPassword: `Forgot password?`,
+  },
+  home: {
+    buttons: {
+      arrival: { text: 'Arrival' },
+      enterApartment: { text: 'Enter at the apartment' },
+      guideActivities: { text: 'Guide & activities' },
+      services: { text: 'Services' },
+      wifi: { text: 'WI-FI' },
+      whatsapp: { text: 'Whatsapp' },
+      sustainability: { text: 'Sustainability' },
+    },
   },
   demo: {
     title: `English`,
