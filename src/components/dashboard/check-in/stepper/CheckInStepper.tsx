@@ -1,16 +1,18 @@
-import * as React from 'react';
+import { useState } from 'react';
 
 // ** Material UI
-import { Box, Stepper, Step, StepLabel, StepConnector, stepConnectorClasses, StepIconProps, Typography } from '@mui/material';
+import { Box, Container, Stepper, Step, StepLabel, StepConnector, stepConnectorClasses, StepIconProps, Typography, Button } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
 // ** Icons
 // import SettingsIcon from '@mui/icons-material/Settings';
 // import GroupAddIcon from '@mui/icons-material/GroupAdd';
 // import VideoLabelIcon from '@mui/icons-material/VideoLabel';
+import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 
 // ** Custom components
 import SvgColor from '../../../svg-color/SvgColor';
+import { CheckIn, Contract, Extras, Passport, Payments, PersonalInfo } from '../forms';
 
 const backgroundImagesPath = '/assets/images/backgrounds/dashboard/check-in/bg-';
 
@@ -86,28 +88,113 @@ function ColorlibStepIcon(props: StepIconProps) {
 }
 
 const steps = ['Arrival time', 'Passport', 'Personal Information', 'Extras', 'Payments', 'Contract'];
+const stepsSubtitles = [
+  'Please fill in this information at least one week in advance. <br /> Please keep in mind the official checking time is at 15h. Early Checking are subject to our availability.',
+
+  'This information is compulsory (article 2....).',
+  'Please provide these contact details. It will make easy us to provide information for your stay.',
+  'Please provide these contact details. It will make easy us to provide information for your stay.',
+  'Please provide these contact details. It will make easy us to provide information for your stay.',
+  'You have completed the process, you can return to the dashboard to continue discovering...',
+];
+const stepsContent: { [index: string]: React.ReactElement } = {
+  0: <CheckIn containerProps={{ mt: '1em' }} />,
+  1: <Passport containerProps={{ mt: '1em' }} />,
+  2: <PersonalInfo containerProps={{ mt: '1em' }} />,
+  3: <Extras containerProps={{ mt: '1em' }} />,
+  4: <Payments containerProps={{ mt: '1em' }} />,
+  5: <Contract containerProps={{ mt: '1em' }} />,
+};
 
 export const CheckInStepper = () => {
+  //  ** States
+  const [activeStep, setActiveStep] = useState(0);
+
+  const handleNext = () => {
+    setActiveStep(prevActiveStep => prevActiveStep + 1);
+  };
+
+  const handleBack = () => {
+    setActiveStep(prevActiveStep => prevActiveStep - 1);
+  };
+
+  // const handleReset = () => {
+  //   setActiveStep(0);
+  // };
+
   return (
-    <Box sx={{ border: '2px solid #609B88', borderRadius: '32px', px: 6, py: 4, mt: 4 }}>
-      <Typography variant="h3" color="primary">
-        Before Arrival
-      </Typography>
-      <Typography variant="h5" fontWeight="regular" color="secondary">
-        Follow the next steps
-      </Typography>
-      <Stepper alternativeLabel activeStep={1} connector={<ColorlibConnector />} sx={{ width: '100%', my: '3em' }}>
-        {steps.map(label => (
-          <Step key={label}>
-            <StepLabel StepIconComponent={ColorlibStepIcon}>{label}</StepLabel>
-          </Step>
-        ))}
-      </Stepper>
-      <Typography variant="body1" fontWeight="regular" color="secondary" lineHeight={2.5}>
-        Please fill in this information at least one week in advance. <br />
-        Please keep in mind the official checking time is at 15h. Early Checking are subject to our availability.
-      </Typography>
-      {/* <Typography variant="body1">Please keep in mind the official checking time is at 15h. Early Checking are subject to our availability.</Typography> */}
-    </Box>
+    <>
+      <Box sx={{ border: '2px solid #609B88', borderRadius: '32px', px: 6, py: 4, mt: 4 }}>
+        <Typography variant="h3" color="primary">
+          Before Arrival
+        </Typography>
+        <Typography variant="h5" fontWeight="regular" color="secondary">
+          Follow the next steps
+        </Typography>
+        <Stepper alternativeLabel activeStep={activeStep} connector={<ColorlibConnector />} sx={{ width: '100%', my: '3em' }}>
+          {steps.map(label => (
+            <Step key={label}>
+              <StepLabel StepIconComponent={ColorlibStepIcon}>{label}</StepLabel>
+            </Step>
+          ))}
+        </Stepper>
+        <Typography variant="body1" fontWeight="regular" color="secondary" lineHeight={2.5}>
+          {stepsSubtitles[activeStep]}
+        </Typography>
+      </Box>
+
+      {/* Forms */}
+      <Container maxWidth="lg">{stepsContent[activeStep]}</Container>
+
+      {/* Actions */}
+      <Box sx={{ display: 'flex', alignItems: 'center', mt: 3 }}>
+        <Button color="primary" disabled={activeStep === 0} onClick={handleBack} sx={{ mr: 1 }} startIcon={<KeyboardArrowLeftIcon />}>
+          Back
+        </Button>
+
+        <Box flexGrow={1} />
+
+        {/* Save Button */}
+        <Button
+          variant="outlined"
+          onClick={handleNext}
+          sx={{
+            width: '178.4px',
+            borderRadius: 136.98,
+            fontWeight: 400, // 600 -> Should be
+            fontSize: '20px',
+            color: theme => (theme.palette.mode === 'light' ? 'primary' : 'grey.800'),
+            '&:hover': {
+              color: theme => (theme.palette.mode === 'light' ? 'primary' : 'grey.800'),
+            },
+            textTransform: 'capitalize',
+          }}
+        >
+          {activeStep === steps.length - 1 ? 'Back to home' : 'Save'}
+        </Button>
+
+        {/* Next Button */}
+        <Button
+          variant="contained"
+          onClick={handleNext}
+          sx={{
+            ml: 1,
+            width: '178.4px',
+            borderRadius: 136.98,
+            fontWeight: 400, // 600 -> Should be
+            fontSize: '20px',
+            bgcolor: 'primary.main',
+            color: theme => (theme.palette.mode === 'light' ? 'common.white' : 'grey.800'),
+            '&:hover': {
+              bgcolor: 'text.primary.darker',
+              color: theme => (theme.palette.mode === 'light' ? 'common.white' : 'grey.800'),
+            },
+            textTransform: 'capitalize',
+          }}
+        >
+          {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+        </Button>
+      </Box>
+    </>
   );
 };

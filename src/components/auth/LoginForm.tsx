@@ -96,10 +96,10 @@ export const LoginForm = () => {
               disableElevation
               sx={{
                 borderRadius: 136.98,
-                bgcolor: 'text.primary.main',
+                bgcolor: 'primary.main',
                 color: theme => (theme.palette.mode === 'light' ? 'common.white' : 'grey.800'),
                 '&:hover': {
-                  bgcolor: 'text.primary.darker',
+                  bgcolor: 'primary.darker',
                   color: theme => (theme.palette.mode === 'light' ? 'common.white' : 'grey.800'),
                 },
                 textTransform: 'capitalize',
