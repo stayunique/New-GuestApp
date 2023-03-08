@@ -26,7 +26,7 @@ const ServiceButton = ({ iconSrc, label }: { iconSrc: string; label: string }) =
         },
       }}
     >
-      <SvgColor src={iconSrc} sx={{ height: '54.25138854980469px', width: '49.773094177246094px', mb: 1 }} />
+      <SvgColor src={iconSrc} sx={{ height: '54.25138854980469px', width: '49.773094177246094px', mb: 2 }} />
       {label}
     </Button>
   );

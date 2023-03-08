@@ -85,7 +85,7 @@ export default function Router() {
         { index: true, element: <GeneralHome /> },
         { path: 'check-in', element: <GeneralCheckIn /> },
         { path: 'services', element: <GeneralServices /> },
-        { path: 'whats-app', element: <GeneralWhatsApp /> },
+        { path: 'whatsapp', element: <GeneralWhatsApp /> },
         { path: 'wifi', element: <GeneralWifi /> },
         { path: 'guide-and-activities', element: <GeneralGuideAndActivities /> },
         { path: 'entrance-to-the-apartment', element: <GeneralEntranceToTheApartment /> },
