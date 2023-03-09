@@ -1,4 +1,5 @@
-import { Grid, Container, Typography, Box } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import { Grid, Container, Typography, Box, Button } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 
 import SvgColor from '../../components/svg-color';
@@ -8,6 +9,7 @@ import './Home.css';
 const Home = () => {
   // ** Hooks
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const backgroundImagesPath = '/assets/images/backgrounds/dashboard/bg-';
   const iconsPath = '/assets/icons/dashboard/';
@@ -15,6 +17,7 @@ const Home = () => {
   const homeButtons = [
     {
       id: 'arrival',
+      link: 'check-in',
       label: 'home.buttons.arrival.text',
       gridValues: {
         xs: 12,
@@ -22,6 +25,7 @@ const Home = () => {
     },
     {
       id: 'enter-apartment',
+      link: 'entrance-to-the-apartment',
       label: 'home.buttons.enterApartment.text',
       gridValues: {
         xs: 12,
@@ -30,6 +34,7 @@ const Home = () => {
     },
     {
       id: 'guide-activities',
+      link: 'guide-and-activities',
       label: 'home.buttons.guideActivities.text',
       gridValues: {
         xs: 12,
@@ -38,6 +43,7 @@ const Home = () => {
     },
     {
       id: 'services',
+      link: 'services',
       label: 'home.buttons.services.text',
       gridValues: {
         xs: 12,
@@ -46,6 +52,7 @@ const Home = () => {
     },
     {
       id: 'wifi',
+      link: 'wifi',
       label: 'home.buttons.wifi.text',
       gridValues: {
         xs: 12,
@@ -54,6 +61,7 @@ const Home = () => {
     },
     {
       id: 'whatsapp',
+      link: 'whatsapp',
       label: 'home.buttons.whatsapp.text',
       gridValues: {
         xs: 12,
@@ -62,6 +70,7 @@ const Home = () => {
 
     // {
     //   id: 'sustainability',
+    //   link: 'sustainability',
     //   label: 'home.buttons.sustainability.text',
     //   gridValues: {
     //     xs: 12,
@@ -83,7 +92,10 @@ const Home = () => {
               justifyContent: 'center',
             }}
           >
-            <Box
+            <Button
+              disableRipple
+              disableFocusRipple
+              disableTouchRipple
               sx={{
                 height: '203.16503876677947px',
                 width: '221.46707121084273px',
@@ -95,11 +107,15 @@ const Home = () => {
                 alignItems: 'center',
                 justifyContent: 'center',
                 flexDirection: 'column',
+                '&:hover': {
+                  backgroundColor: 'transparent',
+                },
               }}
+              onClick={() => navigate(homeButton.link)}
             >
               <SvgColor src={`${iconsPath}${homeButton.id}.svg`} sx={{ color: 'white', width: 82, height: 62, mb: 1 }} />
               <Typography color="white">{t(homeButton.label)}</Typography>
-            </Box>
+            </Button>
           </Grid>
         ))}
       </Grid>

@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { Outlet } from 'react-router-dom';
-import { Box } from '@mui/material';
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { Box, IconButton } from '@mui/material';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Header from './header';
 import Main from './Main';
 import Footer from '../main/Footer';
@@ -9,6 +10,8 @@ import useResponsive from '../../hooks/useResponsive';
 
 export default function DashboardLayout() {
   const isDesktop = useResponsive('up', 'lg');
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
 
   const [open, setOpen] = useState(false);
 
@@ -35,6 +38,12 @@ export default function DashboardLayout() {
         {!isDesktop && renderNavVertical}
 
         <Main>
+          {pathname !== '/dashboard' && pathname !== '/' && (
+            <IconButton onClick={() => navigate(-1)}>
+              <ArrowBackIcon />
+            </IconButton>
+          )}
+
           <Outlet />
         </Main>
       </Box>
